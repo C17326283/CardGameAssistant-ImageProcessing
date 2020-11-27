@@ -73,46 +73,54 @@ When learning poker many people have trouble understanding the poker hands and t
 * This Program starts off by allowing to choose a picture card of their hand of 5 cards that they want analysis on
 * It then calls the function `readCards()` takes in the user inputted image and performs all necessary operatioins on the image.
 * The image is converted to greyscale and then to binary format.
-* With this binary mask the contours are found and sorted by size
-* the program then proceeds to call the function `warpPerspective()` and
-* It then 
-* Suit comparison takes in the cropped symbol image and compares it against the four sample suits. It returns the suit with the smallest difference.
-* Next, 
-* After this,
-* It then 
-* Next 
-* Finally,
+* All the comparison suit images are loaded in from the files.
+* With this binary mask the contours found and sorted by size the program then proceeds to call the function `warpPerspective()` for each card
+* The warpPerspective function ##########
 
+* The images are then cropped from this enhanced image of the card to get the to get the letter and symbol areas.
+* The `GetSymbol` function is called which performs operations on the cropped symbol images to get the contour.
+* The contour is then centered on so that the comparison is accurate every time.
+* The `suitComparison()` function is then called which finds the difference in the card symbol against all the predefined suit images and returns the most likely suit. 
+* The most likely suit is then returned back to `readCards()` which then gets the letter from the cropped letter image with the `GetLetter()` method.
+* This method just cleans up the image and uses pytesseract on it to get the string of the letter in the image.
+* This string is then checked and returns the specific card type back to `readCards()`
+* The program then displays the images its using and what card it is back to the user.
+* All letters and symbols are added to arrays which are passed to the `GetLetter()` function.
+* This functions checks if the cards are sequential and then performs a series of checks to get what poker hand type it is based on the rules of a hand.
+* This result is then returned to the user and the program is complete.
 
 # Performance
 * The algorithm takes a very small amount of time to run.
-* The program is mostly accurate and is perfect for all the different poker hand images in the project folder, but accuracy depends on the image, so if the user wants to test an image from far away, with very bad lighting, or a bad background the accuracy may faulter. 
+* The program is mostly accurate is perfect for all the different poker hand images in the project folder, but accuracy depends on the image, so if the user wants to test an image from far away, with very bad lighting, or a bad background the accuracy may faulter. 
 * The algorithm should work for a range of card brands if they are spaced out properly but this may vary greatly.
 * An effort to increase performance has been made such as only having neccessary things within loops and breaking out of statements if the condition is met.
 
-
 # Underlying concepts & Research:
-* Thresholding: This selects certain parts of a grayscale image based on a threshold value allowing the user to separate objects.
-* Masking: This selects certain parts of an image based on a binary mask.
-* Contours: This finds continuous points on a shape and can be used for object detection.
-* fillPoly: This fills in an area specified by the parameters.
-* GaussianBlur: This blurs the pixels to make the images better fro detection and thresholding
+* Thresholding: This selects certain parts of a grayscale image based on a threshold value allowing the user to separate objects. [12]
+* Masking: This selects certain parts of an image based on a binary mask.[11]
+* Contours: This finds continuous points on a shape and can be used for object detection.[10]
+* fillPoly: This fills in an area specified by the parameters.[9]
+* GaussianBlur: This blurs the pixels to make the images better for detection and thresholding[8]
 * absDiff:
-* Bitwise operations: This is used for editing and flipping the masks of images.
+* Bitwise operations: This is used for editing and flipping the masks of images.[5]
 * WarpPerspective:
-* pytesseract OCR: This used an image of text and returns a string of the characters in the image.
+* pytesseract OCR: There are multiple methods of Optical Character Recognition in python.[2] OCR is basically for extracting text from an image. There were many libaries to choose from[3] but ultimately we ended up choosing pytesseract[4] as it is recommended for use with python. This was hard to get working at first but we found some resources that helped.[7]
 * Bounding rect:
 * Resizing: 
-* https://www.pyimagesearch.com/2014/08/04/opencv-python-color-detection/
-^Color detection
-OCR?: https://towardsdatascience.com/how-to-extract-text-from-images-with-python-db9b87fe432b
+* Approxpoly: 
+* Colour detection: We ultimately found a better to find colour but we researched colour detection for a while [6]
 
-
-* Research
-There are multiple methods of Optical Character Recognition in python.[2] OCR is basically for extracting text from an image. There were many libaries to choose from[3] but ultimately we ended up choosing pytesseract[4] as it is recommended for use with python.
 
 NEED TO FIX CITATIONS:
 [1] https://www.cardschat.com/poker-hands/
 [2] https://docparser.com/blog/what-is-ocr/
 [3] https://en.wikipedia.org/wiki/Comparison_of_optical_character_recognition_software
 [4] https://github.com/UB-Mannheim/tesseract/wiki
+[5] https://en.wikipedia.org/wiki/Bitwise_operation
+[6] https://www.pyimagesearch.com/2014/08/04/opencv-python-color-detection/
+[7] https://towardsdatascience.com/how-to-extract-text-from-images-with-python-db9b87fe432b
+[8] https://docs.opencv.org/master/d4/d13/tutorial_py_filtering.html
+[9] https://www.programcreek.com/python/example/89415/cv2.fillPoly
+[10] https://docs.opencv.org/master/dd/d49/tutorial_py_contour_features.html
+[11] https://www.tutorialspoint.com/what-is-masking-an-image-in-opencv
+[12] https://docs.opencv.org/master/d7/d4d/tutorial_py_thresholding.html
