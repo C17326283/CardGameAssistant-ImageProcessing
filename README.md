@@ -3,7 +3,7 @@ This program reads in a hand of 5 cards and determines the value of each card.
 
 ## Requirements
 
-    Tesseract OCR #Only neccessary if not using anaconda 
+    Tesseract OCR
     pytesseract
 
 ### These steps will give you a rundown of how to install the above packages
@@ -45,11 +45,11 @@ With tesseract set up, run all cells in the notebook. There will be a file open 
 This program assumes the user will use an input image of five playing cards taken from above the cards.
 
 #### Algorithm steps:
-* This Program starts off by
-* It then
-* Once the
-* With this 
-* If 
+* This Program starts off by allowing to choose a picture card of their hand of 5 cards that they want analysis on
+* It then calls the function `readCards()` takes in the user inputted image and converts it to greyscale 
+* Once the image is converted to it is converted to binary format.
+* With this binary mask the contours are found and sorted by size
+* the program then proceeds to call the function `warpPerspective()` and
 * It then 
 * It now 
 * Next, 
@@ -62,13 +62,14 @@ This program assumes the user will use an input image of five playing cards take
 #### Performance
 The algorithm takes a very small amount of time to run, looking almost instant to the user. The program is mostly accurate, but accuracy depends on the image, so if the user wants to test an image from far away or with very bad lighting, accuracy may faulter.
 
-#### Underlying concepts:
+#### Underlying concepts & Research:
 * Thresholding: This selects certain parts of a grayscale image based on a threshold value allowing the user to separate objects.
 * Masking: This selects certain parts of an image based on a binary mask.
 * Contours: This finds continuous points on a shape and can be used for object detection.
 * fillPoly: This fills in an area specified by the parameters.
-* GaussianBlur: 
+* GaussianBlur:
 * pytesseract:
-* absDiff: 
-
-
+* absDiff:
+* https://www.pyimagesearch.com/2014/08/04/opencv-python-color-detection/
+^Color detection
+OCR?: https://towardsdatascience.com/how-to-extract-text-from-images-with-python-db9b87fe432b
