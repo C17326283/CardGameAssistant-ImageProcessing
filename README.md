@@ -6,7 +6,7 @@ For Computer Science Infrastructure 4th year module Image Processing in TU Dubli
 This program reads in a hand of 5 cards and determines the value of each card.
 
 * Idea
-When learning poker many people have trouble understanding the poker hands and their ranks[1]. Our program aims at making this process easier for new players where they just take an image of their takes and the program will tell them what poker hand they have. 
+When learning poker many people have trouble understanding the poker hands and their ranks[26]. Our program aims at making this process easier for new players where they just take an image of their takes and the program will tell them what poker hand they have. 
 
 
 # Requirements
@@ -74,10 +74,14 @@ When learning poker many people have trouble understanding the poker hands and t
 * It then calls the function `readCards()` takes in the user inputted image and performs all necessary operatioins on the image.
 * The image is converted to greyscale and then to binary format.
 * All the comparison suit images are loaded in from the files.
-* With this binary mask the contours found and sorted by size the program then proceeds to call the function `warpPerspective()` for each card
-* The warpPerspective function ##########
-
-* The images are then cropped from this enhanced image of the card to get the to get the letter and symbol areas.
+* With this binary mask the contours found and sorted by size the program then proceeds to call the function `warpPerspective()` for each card [1] [2] 
+* The warpPerspective function takes in the largest contour found
+* it then sets two variables called to width and height which will be used for seting to size of the result of warpPerspective
+* the program then enters a for loop that loops through the point on the biggest contour and gets the points of the vertices and inputs them into an array[9] [10] [11] [13] [14] [15]
+* the points in the array are then sorted and inputted into a new array called `cardPtsSorted()`
+* using the sorted point and the function `cv2.getPerspectiveTransform()` we get the matrix for the `cv2.warpPerpective()` function[16]
+* the output image is then obtained  from `cv2.warpPerpective()` and uses the orignal image, the matrix from the step above and the width and height that was set at the beginning of the function [16]
+* The images are then cropped from this output image of the card to get the to get the letter and symbol areas.[6] [5]
 * The `GetSymbol` function is called which performs operations on the cropped symbol images to get the contour.
 * The contour is then centered on so that the comparison is accurate every time.
 * The `suitComparison()` function is then called which finds the difference in the card symbol against all the predefined suit images and returns the most likely suit. 
@@ -96,19 +100,19 @@ When learning poker many people have trouble understanding the poker hands and t
 * An effort to increase performance has been made such as only having neccessary things within loops and breaking out of statements if the condition is met.
 
 # Underlying concepts & Research:
-* Thresholding: This selects certain parts of a grayscale image based on a threshold value allowing the user to separate objects. [12]
-* Masking: This selects certain parts of an image based on a binary mask.[11]
-* Contours: This finds continuous points on a shape and can be used for object detection.[10]
-* fillPoly: This fills in an area specified by the parameters.[9]
-* GaussianBlur: This blurs the pixels to make the images better for detection and thresholding[8]
+* Thresholding: This selects certain parts of a grayscale image based on a threshold value allowing the user to separate objects. [37]
+* Masking: This selects certain parts of an image based on a binary mask.[36]
+* Contours: This finds continuous points on a shape and can be used for object detection.[35]
+* fillPoly: This fills in an area specified by the parameters.[34]
+* GaussianBlur: This blurs the pixels to make the images better for detection and thresholding[33]
 * absDiff:
-* Bitwise operations: This is used for editing and flipping the masks of images.[5]
+* Bitwise operations: This is used for editing and flipping the masks of images.[30]
 * WarpPerspective:
-* pytesseract OCR: There are multiple methods of Optical Character Recognition in python.[2] OCR is basically for extracting text from an image. There were many libaries to choose from[3] but ultimately we ended up choosing pytesseract[4] as it is recommended for use with python. This was hard to get working at first but we found some resources that helped.[7]
+* pytesseract OCR: There are multiple methods of Optical Character Recognition in python.[27] OCR is basically for extracting text from an image. There were many libaries to choose from[28] but ultimately we ended up choosing pytesseract[29] as it is recommended for use with python. This was hard to get working at first but we found some resources that helped.[32]
 * Bounding rect:
 * Resizing: 
 * Approxpoly: 
-* Colour detection: We ultimately found a better to find colour but we researched colour detection for a while [6]
+* Colour detection: We ultimately found a better to find colour but we researched colour detection for a while [31]
 
 
 NEED TO FIX CITATIONS:
@@ -124,3 +128,48 @@ NEED TO FIX CITATIONS:
 [10] https://docs.opencv.org/master/dd/d49/tutorial_py_contour_features.html
 [11] https://www.tutorialspoint.com/what-is-masking-an-image-in-opencv
 [12] https://docs.opencv.org/master/d7/d4d/tutorial_py_thresholding.html
+
+Bibliography:
+
+[1]“OpenCV Python (Resize, Crop, Rotation, and some other image Attributes),” CodeSpeedy, Nov. 02, 2019. https://www.codespeedy.com/basics-of-opencv-resizing-cropping-rotation/ (accessed Nov. 27, 2020).
+[2]Ankita Shinde, “How to find the coordinates of a contour and crop it?,” Stack Overflow, Apr. 12, 2017. https://stackoverflow.com/questions/43368565/how-to-find-the-coordinates-of-a-contour-and-crop-it (accessed Nov. 27, 2020).
+[3]“OpenCV: Smoothing Images,” Opencv.org, 2020. https://docs.opencv.org/master/d4/d13/tutorial_py_filtering.html (accessed Nov. 27, 2020).
+[4]Ricardo, “How to find corners on a Image using OpenCv,” Stack Overflow, Aug. 31, 2011. https://stackoverflow.com/questions/7263621/how-to-find-corners-on-a-image-using-opencv/50556944 (accessed Nov. 27, 2020).
+[5]A. K. Jakobsson, “OpenCV Basic and Useful Tools: Cropping (Python) - Analytics Vidhya - Medium,” Medium, Apr. 07, 2020. https://medium.com/analytics-vidhya/opencv-basic-and-useful-tools-cropping-python-7ea671f7baf9 (accessed Nov. 27, 2020).
+[6]Mohacool, “Crop simple bounding box with openCV,” Stack Overflow, Nov. 23, 2019. https://stackoverflow.com/questions/59010916/crop-simple-bounding-box-with-opencv (accessed Nov. 27, 2020).
+[7]A. Rosebrock, “Python and OpenCV: Finding OpenCV contours with cv2.findContours,” PyImageSearch, Apr. 21, 2014. https://www.pyimagesearch.com/2014/04/21/building-pokedex-python-finding-game-boy-screen-step-4-6/ (accessed Nov. 27, 2020).
+[8]“Contour Features — OpenCV-Python Tutorials 1 documentation,” Readthedocs.io, 2013. https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_contours/py_contour_features/py_contour_features.html (accessed Nov. 27, 2020).
+[9]“Python Examples of cv2.approxPolyDP,” Programcreek.com, 2020. https://www.programcreek.com/python/example/89328/cv2.approxPolyDP (accessed Nov. 27, 2020).
+[10]Aditya Anandyau, “cv2.approxPolyDP() , cv2.arcLength() How these works,” Stack Overflow, Jun. 09, 2020. https://stackoverflow.com/questions/62274412/cv2-approxpolydp-cv2-arclength-how-these-works (accessed Nov. 27, 2020).
+[11]“Image ApproxPolyDP Example,” Opencv.org, 2020. https://docs.opencv.org/3.4/js_contour_features_approxPolyDP.html (accessed Nov. 27, 2020).
+[12]“OpenCV: Contour Features,” Opencv.org, 2020. https://docs.opencv.org/3.4/dc/dcf/tutorial_js_contour_features.html (accessed Nov. 27, 2020).
+[13]“Detecting Shapes,” Rsdharra.com, 2019. https://rsdharra.com/blog/lesson/16.html (accessed Nov. 27, 2020).
+[14]mark.szewczuk, “Find coordinates of contours,” Stack Overflow, Jan. 24, 2017. https://stackoverflow.com/questions/41840435/find-coordinates-of-contours/41840713 (accessed Nov. 27, 2020).
+[15]“numpy.ravel() in Python - GeeksforGeeks,” GeeksforGeeks, Sep. 11, 2017. https://www.geeksforgeeks.org/numpy-ravel-python/ (accessed Nov. 27, 2020).
+[16]A. Rosebrock, “4 Point OpenCV getPerspective Transform Example - PyImageSearch,” PyImageSearch, Aug. 25, 2014. https://www.pyimagesearch.com/2014/08/25/4-point-opencv-getperspective-transform-example/ (accessed Nov. 27, 2020).
+
+
+[17]“Template Matching — OpenCV 2.4.13.7 documentation,” Opencv.org, 2011. https://docs.opencv.org/2.4/doc/tutorials/imgproc/histograms/template_matching/template_matching.html (accessed Nov. 27, 2020).
+[18]“Object Detection — OpenCV 2.4.13.7 documentation,” Opencv.org, 2011. https://docs.opencv.org/2.4/modules/imgproc/doc/object_detection.html?highlight=matchtemplate#cv2.matchTemplate (accessed Nov. 27, 2020).
+[19]Adam, “How do I find an image contained within an image?,” Stack Overflow, Oct. 21, 2011. https://stackoverflow.com/questions/7853628/how-do-i-find-an-image-contained-within-an-image (accessed Nov. 27, 2020).
+[20]“Template Matching — OpenCV-Python Tutorials 1 documentation,” Readthedocs.io, 2013. https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_template_matching/py_template_matching.html (accessed Nov. 27, 2020).
+[21]R. David, “Chapter 10: Movement Detection With Background - Robin David,” Robindavid.fr, 2018. http://www.robindavid.fr/opencv-tutorial/chapter10-movement-detection-with-background.html (accessed Nov. 27, 2020).
+[22]“Python Examples of cv2.absdiff,” Programcreek.com, 2020. https://www.programcreek.com/python/example/89428/cv2.absdiff (accessed Nov. 27, 2020).
+[23]ThemeGrill, “python cv2.absdiff examples,” Codesuche.com, 2020. https://codesuche.com/python-examples/cv2.absdiff/ (accessed Nov. 27, 2020).
+[24]Adam, “How do I find an image contained within an image?,” Stack Overflow, Oct. 21, 2011. https://stackoverflow.com/questions/7853628/how-do-i-find-an-image-contained-within-an-image (accessed Nov. 27, 2020).
+[25]R. David, “Chapter 10: Movement Detection With Background - Robin David,” Robindavid.fr, 2018. http://www.robindavid.fr/opencv-tutorial/chapter10-movement-detection-with-background.html (accessed Nov. 27, 2020).
+
+
+[26]“Video Tutorial: Poker Hand Rankings,” CardsChatTM, 2017. https://www.cardschat.com/poker-hands/ (accessed Nov. 27, 2020).
+[27]J. Harris, “What Is OCR And What Is It Used For?,” Document Data Capture And Workflow Automation, Nov. 28, 2017. https://docparser.com/blog/what-is-ocr/ (accessed Nov. 27, 2020).
+[28]Wikipedia Contributors, “Comparison of optical character recognition software,” Wikipedia, Oct. 14, 2020. https://en.wikipedia.org/wiki/Comparison_of_optical_character_recognition_software (accessed Nov. 27, 2020).
+[29]UB-Mannheim, “UB-Mannheim/tesseract,” GitHub, Mar. 28, 2020. https://github.com/UB-Mannheim/tesseract/wiki (accessed Nov. 27, 2020).
+[30]Wikipedia Contributors, “Bitwise operation,” Wikipedia, Oct. 24, 2020. https://en.wikipedia.org/wiki/Bitwise_operation (accessed Nov. 27, 2020).
+[31]A. Rosebrock, “OpenCV and Python Color Detection - PyImageSearch,” PyImageSearch, Aug. 04, 2014. https://www.pyimagesearch.com/2014/08/04/opencv-python-color-detection/ (accessed Nov. 27, 2020).
+[32]Costas Andreou, “How to Extract Text from Images with Python - Towards Data Science,” Medium, Apr. 10, 2020. https://towardsdatascience.com/how-to-extract-text-from-images-with-python-db9b87fe432b (accessed Nov. 27, 2020).
+[33]“OpenCV: Smoothing Images,” Opencv.org, 2020. https://docs.opencv.org/master/d4/d13/tutorial_py_filtering.html (accessed Nov. 27, 2020).
+[34]“Python Examples of cv2.fillPoly,” Programcreek.com, 2020. https://www.programcreek.com/python/example/89415/cv2.fillPoly (accessed Nov. 27, 2020).
+[35]“OpenCV: Contour Features,” Opencv.org, 2020. https://docs.opencv.org/master/dd/d49/tutorial_py_contour_features.html (accessed Nov. 27, 2020).
+[36]“What is masking an image in OpenCV?,” Tutorialspoint.com, 2020. https://www.tutorialspoint.com/what-is-masking-an-image-in-opencv (accessed Nov. 27, 2020).
+[37]“OpenCV: Image Thresholding,” Opencv.org, 2020. https://docs.opencv.org/master/d7/d4d/tutorial_py_thresholding.html (accessed Nov. 27, 2020).
+‌
