@@ -1,6 +1,5 @@
 # CardGameAssistant-ImageProcessing
-
-A Repository for our Image Processing module in 4th year of DT211c
+This program reads in a hand of 5 cards and determines the value of each card.
 
 ## Requirements
 
@@ -38,3 +37,38 @@ A Repository for our Image Processing module in 4th year of DT211c
       * to verify the install open CMD and type `tesseract`.
   * once the above steps have been taken you can proceed to install pytesseract using the following command:
     * `pip install pytesseract`
+
+#### Instructions
+With tesseract set up, run all cells in the notebook. There will be a file open box allowing you to pick any of the sample card hands. The program will display the value of all the cards in the chosen image.
+
+#### Assumptions
+This program assumes the user will use an input image of five playing cards taken from above the cards.
+
+#### Algorithm steps:
+* This Program starts off by
+* It then
+* Once the
+* With this 
+* If 
+* It then 
+* It now 
+* Next, 
+* After this,
+* It then 
+* Next 
+* Finally,
+
+
+#### Performance
+The algorithm takes a very small amount of time to run, looking almost instant to the user. The program is mostly accurate, but accuracy depends on the image, so if the user wants to test an image from far away or with very bad lighting, accuracy may faulter.
+
+#### Underlying concepts:
+* Thresholding: This selects certain parts of a grayscale image based on a threshold value allowing the user to separate objects.
+* Masking: This selects certain parts of an image based on a binary mask.
+* Contours: This finds continuous points on a shape and can be used for object detection.
+* fillPoly: This fills in an area specified by the parameters.
+* GaussianBlur: 
+* pytesseract:
+* absDiff: 
+
+
