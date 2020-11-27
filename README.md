@@ -76,7 +76,7 @@ When learning poker many people have trouble understanding the poker hands and t
 * With this binary mask the contours are found and sorted by size
 * the program then proceeds to call the function `warpPerspective()` and
 * It then 
-* It now 
+* Suit comparison takes in the cropped symbol image and compares it against the four sample suits. It returns the suit with the smallest difference.
 * Next, 
 * After this,
 * It then 
@@ -86,7 +86,7 @@ When learning poker many people have trouble understanding the poker hands and t
 
 # Performance
 * The algorithm takes a very small amount of time to run.
-* The program is mostly accurate is perfect for all the different poker hand images in the project folder, but accuracy depends on the image, so if the user wants to test an image from far away, with very bad lighting, or a bad background the accuracy may faulter. 
+* The program is mostly accurate and is perfect for all the different poker hand images in the project folder, but accuracy depends on the image, so if the user wants to test an image from far away, with very bad lighting, or a bad background the accuracy may faulter. 
 * The algorithm should work for a range of card brands if they are spaced out properly but this may vary greatly.
 * An effort to increase performance has been made such as only having neccessary things within loops and breaking out of statements if the condition is met.
 
