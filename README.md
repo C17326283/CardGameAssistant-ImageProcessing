@@ -1,12 +1,10 @@
-# Info
+# CardGameAssistant-ImageProcessing
+This program reads in a hand of 5 cards and determines the value of each card.
 By Kyle Heffernan, Eoin Gallagher and Ryan Byrne
 For Computer Science Infrastructure 4th year module Image Processing in TU Dublin.
 
-# CardGameAssistant-ImageProcessing
-This program reads in a hand of 5 cards and determines the value of each card.
-
-* Idea
-When learning poker many people have trouble understanding the poker hands and their ranks[26]. Our program aims at making this process easier for new players where they just take an image of their takes and the program will tell them what poker hand they have. 
+# Idea
+When learning poker many people have trouble understanding the poker hands and their ranks[26]. Our program aims at making this process easier for new players where they just take an image of their takes and the program will tell them what poker hand they have.
 
 
 # Requirements
@@ -105,29 +103,15 @@ When learning poker many people have trouble understanding the poker hands and t
 * Contours: This finds continuous points on a shape and can be used for object detection.[35]
 * fillPoly: This fills in an area specified by the parameters.[34]
 * GaussianBlur: This blurs the pixels to make the images better for detection and thresholding[33]
-* absDiff:
+* absDiff: Compares the differences between two images [21]  [22]  [23]  [25]
 * Bitwise operations: This is used for editing and flipping the masks of images.[30]
-* WarpPerspective:
+* WarpPerspective: Used to get birds eye view of a photo.
 * pytesseract OCR: There are multiple methods of Optical Character Recognition in python.[27] OCR is basically for extracting text from an image. There were many libaries to choose from[28] but ultimately we ended up choosing pytesseract[29] as it is recommended for use with python. This was hard to get working at first but we found some resources that helped.[32]
-* Bounding rect:
-* Resizing: 
-* Approxpoly: 
+* Bounding rect: Puts rectangle around contour area.
+* Resizing: Changing the dimensions of an image.
 * Colour detection: We ultimately found a better to find colour but we researched colour detection for a while [31]
 
 
-NEED TO FIX CITATIONS:
-[1] https://www.cardschat.com/poker-hands/
-[2] https://docparser.com/blog/what-is-ocr/
-[3] https://en.wikipedia.org/wiki/Comparison_of_optical_character_recognition_software
-[4] https://github.com/UB-Mannheim/tesseract/wiki
-[5] https://en.wikipedia.org/wiki/Bitwise_operation
-[6] https://www.pyimagesearch.com/2014/08/04/opencv-python-color-detection/
-[7] https://towardsdatascience.com/how-to-extract-text-from-images-with-python-db9b87fe432b
-[8] https://docs.opencv.org/master/d4/d13/tutorial_py_filtering.html
-[9] https://www.programcreek.com/python/example/89415/cv2.fillPoly
-[10] https://docs.opencv.org/master/dd/d49/tutorial_py_contour_features.html
-[11] https://www.tutorialspoint.com/what-is-masking-an-image-in-opencv
-[12] https://docs.opencv.org/master/d7/d4d/tutorial_py_thresholding.html
 
 Bibliography:
 
@@ -147,8 +131,6 @@ Bibliography:
 [14]mark.szewczuk, “Find coordinates of contours,” Stack Overflow, Jan. 24, 2017. https://stackoverflow.com/questions/41840435/find-coordinates-of-contours/41840713 (accessed Nov. 27, 2020).
 [15]“numpy.ravel() in Python - GeeksforGeeks,” GeeksforGeeks, Sep. 11, 2017. https://www.geeksforgeeks.org/numpy-ravel-python/ (accessed Nov. 27, 2020).
 [16]A. Rosebrock, “4 Point OpenCV getPerspective Transform Example - PyImageSearch,” PyImageSearch, Aug. 25, 2014. https://www.pyimagesearch.com/2014/08/25/4-point-opencv-getperspective-transform-example/ (accessed Nov. 27, 2020).
-
-
 [17]“Template Matching — OpenCV 2.4.13.7 documentation,” Opencv.org, 2011. https://docs.opencv.org/2.4/doc/tutorials/imgproc/histograms/template_matching/template_matching.html (accessed Nov. 27, 2020).
 [18]“Object Detection — OpenCV 2.4.13.7 documentation,” Opencv.org, 2011. https://docs.opencv.org/2.4/modules/imgproc/doc/object_detection.html?highlight=matchtemplate#cv2.matchTemplate (accessed Nov. 27, 2020).
 [19]Adam, “How do I find an image contained within an image?,” Stack Overflow, Oct. 21, 2011. https://stackoverflow.com/questions/7853628/how-do-i-find-an-image-contained-within-an-image (accessed Nov. 27, 2020).
@@ -158,8 +140,6 @@ Bibliography:
 [23]ThemeGrill, “python cv2.absdiff examples,” Codesuche.com, 2020. https://codesuche.com/python-examples/cv2.absdiff/ (accessed Nov. 27, 2020).
 [24]Adam, “How do I find an image contained within an image?,” Stack Overflow, Oct. 21, 2011. https://stackoverflow.com/questions/7853628/how-do-i-find-an-image-contained-within-an-image (accessed Nov. 27, 2020).
 [25]R. David, “Chapter 10: Movement Detection With Background - Robin David,” Robindavid.fr, 2018. http://www.robindavid.fr/opencv-tutorial/chapter10-movement-detection-with-background.html (accessed Nov. 27, 2020).
-
-
 [26]“Video Tutorial: Poker Hand Rankings,” CardsChatTM, 2017. https://www.cardschat.com/poker-hands/ (accessed Nov. 27, 2020).
 [27]J. Harris, “What Is OCR And What Is It Used For?,” Document Data Capture And Workflow Automation, Nov. 28, 2017. https://docparser.com/blog/what-is-ocr/ (accessed Nov. 27, 2020).
 [28]Wikipedia Contributors, “Comparison of optical character recognition software,” Wikipedia, Oct. 14, 2020. https://en.wikipedia.org/wiki/Comparison_of_optical_character_recognition_software (accessed Nov. 27, 2020).
